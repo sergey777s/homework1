@@ -1,11 +1,13 @@
 import java.util.*;
 
-public class Main
+public class PhoneValidator
 {
 	public static void main(String[] args)
 	{
 		boolean eflag;
 		String phone;
+		int tempCrc=0;
+		int crc=-1;
 		char[] phonemas=new char[0];
 		do{
 			eflag = false;
@@ -55,30 +57,30 @@ public class Main
 				eflag = true;
 			}
 		}while(eflag);
-		int temp1=0;
+		
 		for (int i=0;i < phonemas.length;i++)
 		{
 			if (phone.charAt(i) == '+')
 			{
 				continue;
 			}
-			temp1 = temp1 + phonemas[i] - 48;
+			tempCrc = tempCrc + phonemas[i] - 48;
 		}
-		//System.out.println("temp1="+temp1);
-		int crc=-1;
+		
+		
 		while (crc == -1)
 		{
 
-			if (temp1 < 10)
+			if (tempCrc < 10)
 			{
-				crc = temp1;
+				crc = tempCrc;
 			}
 			else
 			{
 				char[] tempchar=new char[2];
-				tempchar = String.valueOf(temp1).toCharArray();
-				temp1 = tempchar[0] - 48 + tempchar[1] - 48;
-				//   System.out.println(temp1);
+				tempchar = String.valueOf(tempCrc).toCharArray();
+				tempCrc = tempchar[0] - 48 + tempchar[1] - 48;
+				
 			}
 		}
 		switch (crc)

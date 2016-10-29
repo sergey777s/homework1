@@ -1,3 +1,4 @@
+package HomeWork2.HomeWork2.src;
 public class TriangleInside
 {
 	double cSide;

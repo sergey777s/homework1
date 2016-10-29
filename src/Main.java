@@ -1,4 +1,4 @@
-
+package HomeWork2.HomeWork2.src;
 import java.util.*;
 interface shapeParameters{
 	public void calculateArea(int aSide, int bSide);

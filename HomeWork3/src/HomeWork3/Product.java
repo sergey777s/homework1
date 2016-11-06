@@ -15,17 +15,19 @@ public class Product {
         this.price=price;
         this.quantity=quantity;
         this.category=category;
-
     }
     public String getName(){
         return name;
     }
+
     public double getPrice(){
         return price;
     }
+
     public int getQuantity(){
         return quantity;
     }
+
     public String getCategory(){
         return  category;
     }

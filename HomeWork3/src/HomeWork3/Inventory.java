@@ -4,17 +4,10 @@ package HomeWork3;
  */
 
 import HomeWork3.Product;
-
 import java.util.Map;
 import java.util.TreeMap;
-interface InventoryInterface{
-    void add(Product product);
-    void printAllinCategory(String category);
-    void printAll();
-}
 
-
-public class Inventory implements InventoryInterface{
+public class Inventory implements InventoryMust{
     private Map<String,Double> productPrices=new TreeMap<>();
     private Map<String,Integer> productQuantitys=new TreeMap<>();
     private Map<String,String> productCategorys=new TreeMap<>();
@@ -22,12 +15,15 @@ public class Inventory implements InventoryInterface{
     public Map<String,Double> getMapPrices(){
         return productPrices;
     }
+
     public Map<String,Integer> getMapQuanitis(){
         return productQuantitys;
     }
+
     public Map<String,String> getMapCategorys(){
         return productCategorys;
     }
+
     public void add (Product product){
         if(productPrices.containsKey(product.getName())){
             productPrices.put(product.getName(),product.getPrice());
@@ -39,7 +35,10 @@ public class Inventory implements InventoryInterface{
             productCategorys.put(product.getName(), product.getCategory());
         }
     }
-    public void printAllinCategory(String category){
+
+
+
+    public double getCostByCategory(String category){
         String name;
         double price;
         int quantity;
@@ -55,15 +54,16 @@ public class Inventory implements InventoryInterface{
                 totalCost = totalCost + price*quantity;
             }
         }
-        System.out.println("Total cost: "+totalCost);
+        return totalCost;
     }
 
-    public void printAll(){
+    public double printAll(){
         String name;
         String category;
         double price;
         int quantity;
         double totalCost=0;
+
         System.out.println("All products in database: ");
         for(Map.Entry<String,String> e : productCategorys.entrySet()){
             name=e.getKey();
@@ -73,6 +73,6 @@ public class Inventory implements InventoryInterface{
             System.out.println("Name = " + name + " price: " + price + " quantity on hand:" + quantity+ " category: "+category);
             totalCost = totalCost + price*quantity;
         }
-        System.out.println("Total cost: "+totalCost);
+        return totalCost;
     }
 }

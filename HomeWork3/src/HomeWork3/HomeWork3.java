@@ -11,18 +11,18 @@ import java.util.Scanner;
  * Created by Sergey777s on 04.11.16.
  *
  */
+
 public class HomeWork3 {
 
 	public static void main(String args[]) {
-		Inventory inventory = new Inventory();
+		Inventory inventoryBase = new Inventory();
 		Scanner scanner = new Scanner(System.in);
 		Boolean yesAnswer = false;
 		Boolean yesAnswerExit = false;
 		int userAnswer;
-
+		Product product;
 
 		System.out.println("Welcome to 1C GitHub edition!!!");
-		Product product;
 		do {
 			System.out.println("please input your category of goods:");
 			String category = scanner.nextLine();
@@ -36,10 +36,12 @@ public class HomeWork3 {
 
 				System.out.println("Write price of product: ");
 				price = scanner.nextDouble();
+
 				System.out.println("Write quantity of product: ");
 				quantity = scanner.nextInt();
+
 				product = new Product(name, price, quantity, category);
-				inventory.add(product);
+				inventoryBase.add(product);
 				System.out.println("To continue add products in category " + category + " press 1 or anydigit to close this category:");
 				userAnswer = scanner.nextInt();
 				scanner.nextLine();
@@ -53,9 +55,10 @@ public class HomeWork3 {
 		} while (yesAnswerExit);
 
 		System.out.println("Write name of category what you want to check ot any digit to check all base:");
+
 		if (scanner.hasNextInt()) {
-			inventory.printAll();
+            System.out.println("total cost ="+inventoryBase.printAll());
 		} else
-			inventory.printAllinCategory(scanner.nextLine());
+            System.out.println("total cost =" + inventoryBase.printAllinCategory(scanner.nextLine()));
 	}
 }
